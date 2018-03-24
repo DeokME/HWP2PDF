@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using PdfSharp.Pdf;
 
 namespace hwp2pdf
 {
@@ -46,8 +47,15 @@ namespace hwp2pdf
 
             bool result = axHwpCtrl1.RegisterModule("FilePathCheckDLL", "FilePathChecker");
             axHwpCtrl1.Open(inputFilePath);
+            /*
+             * PDF, HTML, PNG, DOC
+             * 
+             */
             axHwpCtrl1.SaveAs(outputFilePath, "PDF", null);
             axHwpCtrl1.Clear();
+
+            PdfDocument pdf = new PdfDocument();
+
 
             return true;
         }
